@@ -1,0 +1,16 @@
+# Standards: 0.1
+---
+- name: Kill buttercup
+  command: killall Buttercup
+  register: buttercup_kill
+  failed_when: buttercup_kill.rc != 0 and "No matching processes belonging to you were found" not in buttercup_kill.stderr
+  become: "{{ (buttercup_user != ansible_user_id) | bool }}"
+  become_user: "{{ buttercup_user }}"
+
+- name: Start buttercup
+  when: buttercup_started
+  command: open -j /Applications/Buttercup.app
+  become: "{{ (buttercup_user != ansible_user_id) | bool }}"
+  become_user: "{{ buttercup_user }}"
+
+...
