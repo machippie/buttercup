@@ -36,6 +36,7 @@
 
     - name: Check program running
       register: buttercup_running
+      check_mode: False
       failed_when: False
       changed_when: buttercup_running.stdout | length > 0 | bool
       command: pidof Buttercup
