@@ -1,0 +1,10 @@
+# Standards: 0.1
+---
+# @var buttercup_user:description: User to run user-specific commands
+# @var buttercup_user:value: buttercup_user | default(homebrew_user) | default(ansible_user_id)
+# buttercup_user:
+
+# @var buttercup_started:description: Restart app if already running
+buttercup_started: True
+
+...
