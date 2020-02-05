@@ -1,6 +1,6 @@
 # buttercup
 
-[![Build Status](https://cloud.drone.io/api/badges/machippie/buttercup/status.svg)](https://cloud.drone.io/machippie/google-chrome)
+[![Build Status](https://cloud.drone.io/api/badges/machippie/buttercup/status.svg)](https://cloud.drone.io/machippie/buttercup)
 
 Ansible role to configure buttercup.
 
