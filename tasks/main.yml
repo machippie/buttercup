@@ -20,33 +20,12 @@
       tags:
         - buttercup
 
-    - name: Remove quarantine flag
-      register: buttercup_quarantine
-      failed_when: buttercup_quarantine.rc != 0 and "No such xattr" not in buttercup_quarantine.stderr
-      changed_when: buttercup_quarantine.rc == 0
-      command: xattr -d com.apple.quarantine /Applications/Buttercup.app
-      tags:
-        - buttercup
-
-    - name: Install pidof package
-      homebrew:
-        name: pidof
-      tags:
-        - buttercup
-
-    - name: Check program running
-      register: buttercup_running
-      check_mode: False
-      failed_when: False
-      changed_when: buttercup_running.stdout | length > 0 | bool
-      command: pidof Buttercup
-      tags:
-        - buttercup
-
-    - name: Fact program running
-      set_fact:
-        buttercup_started: "{{ buttercup_running.stdout_lines | length > 0 | bool }}"
-      tags:
-        - buttercup
+- name: Remove quarantine flag
+  register: buttercup_quarantine
+  failed_when: buttercup_quarantine.rc != 0 and "No such xattr" not in buttercup_quarantine.stderr
+  changed_when: buttercup_quarantine.rc == 0
+  command: xattr -d com.apple.quarantine /Applications/Buttercup.app
+  tags:
+    - buttercup
 
 ...
